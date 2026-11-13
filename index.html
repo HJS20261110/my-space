@@ -15,15 +15,31 @@
 }
 body{background:#fffdf4;color:var(--text);line-height:1.7}
 header{background:var(--white);box-shadow:0 2px 10px #00000012;position:sticky;top:0;z-index:99}
-nav{max-width:1200px;margin:0 auto;padding:10px 20px;display:flex;justify-content:space-between;align-items:center}
-.left-title{
-  font-size:20px;
+.top-bar{
+  max-width:1200px;
+  margin:0 auto;
+  padding:12px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
-.nav-links a{display:inline-block;padding:10px 12px;text-decoration:none;color:#333;font-size:16px;}
-.nav-links a.active{background-color:#ffc107;color:#fff;border-radius:8px;}
-.user-info{text-align:center;}
+.logo{
+  font-size:24px;
+  color:var(--main);
+  font-weight:bold;
+}
+.user-info{
+  text-align:center;
+}
 .user-info img{width:48px;height:48px;border-radius:50%;object-fit:cover;}
 .user-info p{margin-top:4px;}
+.nav-wrap{
+  max-width:1200px;
+  margin:0 auto;
+  padding:0 20px 12px 20px;
+}
+.nav-links a{display:inline-block;padding:8px 12px;text-decoration:none;color:#333;font-size:16px;}
+.nav-links a.active{background-color:#ffc107;color:#fff;border-radius:8px;}
 .banner{background:linear-gradient(90deg,#ffe470,#ffc107);height:320px;display:flex;align-items:center;justify-content:center;}
 .banner h1{font-size:46px;color:#222;}
 .container{padding:40px 30px;max-width:1200px;margin:0 auto;}
@@ -33,12 +49,19 @@ nav{max-width:1200px;margin:0 auto;padding:10px 20px;display:flex;justify-conten
 .content p{font-size:18px;color:#444;line-height:1.8;}
 .section{display:none;}
 .section.show{display:block;}
+footer{text-align:center;padding:20px;color:#666;font-size:14px;}
 </style>
 </head>
 <body>
 <header>
-  <nav>
-    <div class="left-title">青春风采 活力无限</div>
+  <div class="top-bar">
+    <div class="logo">青春风采 活力无限</div>
+    <div class="user-info">
+      <img src="avatar.jpg" alt="头像">
+      <p>胡劲松</p>
+    </div>
+  </div>
+  <div class="nav-wrap">
     <div class="nav-links">
       <a href="#" class="active" data-target="home">首页</a>
       <a href="#" data-target="album">相册</a>
@@ -51,11 +74,7 @@ nav{max-width:1200px;margin:0 auto;padding:10px 20px;display:flex;justify-conten
       <a href="#" data-target="video">视频</a>
       <a href="#" data-target="other">其他</a>
     </div>
-    <div class="user-info">
-      <img src="avatar.jpg" alt="头像">
-      <p>胡劲松</p>
-    </div>
-  </nav>
+  </div>
 </header>
 <section class="banner">
   <h1>致永不消逝的青春</h1>
@@ -152,7 +171,7 @@ nav{max-width:1200px;margin:0 auto;padding:10px 20px;display:flex;justify-conten
     </div>
   </div>
 </div>
-<footer>© 2026 青春风采 活力无限</footer>
+<footer>© 2026 青春风采 活力无限<br>@HJS20261110</footer>
 
 <script>
 const links = document.querySelectorAll('.nav-links a');
