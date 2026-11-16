@@ -45,6 +45,34 @@ footer{margin-top:40px;padding:20px 0;text-align:center;color:var(--gray)}
   display:block;
 }
 
+/* 文件夹样式 */
+.folder-item{
+  background:var(--light);
+  padding:12px 16px;
+  border-radius:8px;
+  margin:8px 0;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.folder-item::before{
+  content:"📁";
+  font-size:20px;
+}
+.folder-item.open::before{
+  content:"📂";
+}
+.folder-img-group{
+  display:none;
+  padding:12px 0 12px 30px;
+}
+.folder-img-group.show{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:14px;
+}
+
 /* 图片放大弹窗样式 */
 .img-modal{
   display:none;
@@ -91,14 +119,19 @@ footer{margin-top:40px;padding:20px 0;text-align:center;color:var(--gray)}
   </div>
 </header>
 <div class="container">
-<!-- 相册 -->
+<!-- 相册（带文件夹） -->
 <div class="section" id="album">
   <h2>相册 <button class="dropdown-btn">▼</button></h2>
   <div class="dropdown-content">
-    <div class="grid">
+    <div class="folder-item">家庭合影</div>
+    <div class="folder-img-group">
       <div class="card">
         <img src="photos/img01.jpg" alt="照片" class="zoom-img" style="width:100%;height:220px;object-fit:cover;">
       </div>
+    </div>
+
+    <div class="folder-item">风景随拍</div>
+    <div class="folder-img-group">
       <div class="card">
         <img src="photos/img02.jpg" alt="照片" class="zoom-img" style="width:100%;height:220px;object-fit:cover;">
       </div>
@@ -244,13 +277,23 @@ links.forEach(link=>{
   }
 })
 
-// 专栏下拉
+// 栏目下拉
 const dropBtns = document.querySelectorAll('.dropdown-btn');
 dropBtns.forEach(btn=>{
   btn.onclick = function(){
     const content = this.parentElement.nextElementSibling;
     content.classList.toggle('show');
     this.textContent = content.classList.contains('show') ? '▲' : '▼';
+  }
+})
+
+// 文件夹点击展开
+const folders = document.querySelectorAll('.folder-item');
+folders.forEach(folder=>{
+  folder.onclick = function(){
+    const imgGroup = this.nextElementSibling;
+    imgGroup.classList.toggle('show');
+    this.classList.toggle('open');
   }
 })
 
