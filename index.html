@@ -32,7 +32,7 @@ footer{margin-top:40px;padding:20px 0;text-align:center;color:var(--gray)}
 .dropdown-btn{
   border:none;
   background:transparent;
-  font-size:18px;
+  font-size:22px;
   cursor:pointer;
   color:var(--main);
   margin-left:8px;
@@ -45,27 +45,28 @@ footer{margin-top:40px;padding:20px 0;text-align:center;color:var(--gray)}
   display:block;
 }
 
-/* 文件夹样式 */
+/* 文件夹，去掉方框，使用emoji文件夹 */
 .folder-item{
   background:var(--light);
-  padding:12px 16px;
-  border-radius:8px;
-  margin:8px 0;
+  padding:14px 18px;
+  border-radius:10px;
+  margin:10px 0;
   cursor:pointer;
   display:flex;
   align-items:center;
-  gap:8px;
+  gap:10px;
+  font-size:18px;
 }
 .folder-item::before{
   content:"📁";
-  font-size:20px;
+  font-size:24px;
 }
 .folder-item.open::before{
   content:"📂";
 }
 .folder-img-group{
   display:none;
-  padding:12px 0 12px 30px;
+  padding:14px 0 14px 36px;
   grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
   gap:14px;
 }
@@ -128,7 +129,6 @@ footer{margin-top:40px;padding:20px 0;text-align:center;color:var(--gray)}
     <div class="folder-item">文件夹2</div>
     <div class="folder-img-group"></div>
     <div class="folder-item">文件夹3</div>
-    <div class="folder-img-group"></div>
   </div>
 </div>
 <!-- 运动 -->
