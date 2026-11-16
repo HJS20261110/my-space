@@ -45,7 +45,7 @@ footer{margin-top:40px;padding:20px 0;text-align:center;color:var(--gray)}
   display:block;
 }
 
-/* 文件夹样式 */
+/* 文件夹样式，和页面风格统一 */
 .folder-item{
   background:var(--light);
   padding:12px 16px;
@@ -66,11 +66,11 @@ footer{margin-top:40px;padding:20px 0;text-align:center;color:var(--gray)}
 .folder-img-group{
   display:none;
   padding:12px 0 12px 30px;
+  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:14px;
 }
 .folder-img-group.show{
   display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
-  gap:14px;
 }
 
 /* 图片放大弹窗样式 */
@@ -119,22 +119,15 @@ footer{margin-top:40px;padding:20px 0;text-align:center;color:var(--gray)}
   </div>
 </header>
 <div class="container">
-<!-- 相册（带文件夹） -->
+<!-- 相册 -->
 <div class="section" id="album">
   <h2>相册 <button class="dropdown-btn">▼</button></h2>
   <div class="dropdown-content">
     <div class="folder-item">家庭合影</div>
     <div class="folder-img-group">
-      <div class="card">
-        <img src="photos/img01.jpg" alt="照片" class="zoom-img" style="width:100%;height:220px;object-fit:cover;">
-      </div>
     </div>
-
     <div class="folder-item">风景随拍</div>
     <div class="folder-img-group">
-      <div class="card">
-        <img src="photos/img02.jpg" alt="照片" class="zoom-img" style="width:100%;height:220px;object-fit:cover;">
-      </div>
     </div>
   </div>
 </div>
@@ -143,13 +136,11 @@ footer{margin-top:40px;padding:20px 0;text-align:center;color:var(--gray)}
 <div class="section" id="sport">
   <h2>运动 <button class="dropdown-btn">▼</button></h2>
   <div class="dropdown-content">
-    <div class="grid">
-      <div class="card">
-        <div class="card-body">
-          <h3>日常锻炼</h3>
-          <p>跑步、球类等运动记录</p>
-        </div>
-      </div>
+    <div class="folder-item">跑步记录</div>
+    <div class="folder-img-group">
+    </div>
+    <div class="folder-item">球类运动</div>
+    <div class="folder-img-group">
     </div>
   </div>
 </div>
@@ -158,13 +149,11 @@ footer{margin-top:40px;padding:20px 0;text-align:center;color:var(--gray)}
 <div class="section" id="music">
   <h2>音乐 <button class="dropdown-btn">▼</button></h2>
   <div class="dropdown-content">
-    <div class="grid">
-      <div class="card">
-        <div class="card-body">
-          <h3>喜欢的歌单</h3>
-          <p>收藏的乐曲、老歌</p>
-        </div>
-      </div>
+    <div class="folder-item">老歌收藏</div>
+    <div class="folder-img-group">
+    </div>
+    <div class="folder-item">轻音乐</div>
+    <div class="folder-img-group">
     </div>
   </div>
 </div>
@@ -173,13 +162,11 @@ footer{margin-top:40px;padding:20px 0;text-align:center;color:var(--gray)}
 <div class="section" id="travel">
   <h2>旅行 <button class="dropdown-btn">▼</button></h2>
   <div class="dropdown-content">
-    <div class="grid">
-      <div class="card">
-        <div class="card-body">
-          <h3>旅途见闻</h3>
-          <p>各地风景、出行随笔</p>
-        </div>
-      </div>
+    <div class="folder-item">国内游记</div>
+    <div class="folder-img-group">
+    </div>
+    <div class="folder-item">近郊出行</div>
+    <div class="folder-img-group">
     </div>
   </div>
 </div>
@@ -188,13 +175,11 @@ footer{margin-top:40px;padding:20px 0;text-align:center;color:var(--gray)}
 <div class="section" id="read">
   <h2>阅读 <button class="dropdown-btn">▼</button></h2>
   <div class="dropdown-content">
-    <div class="grid">
-      <div class="card">
-        <div class="card-body">
-          <h3>读书笔记</h3>
-          <p>好书摘抄、感悟记录</p>
-        </div>
-      </div>
+    <div class="folder-item">读书笔记</div>
+    <div class="folder-img-group">
+    </div>
+    <div class="folder-item">摘抄片段</div>
+    <div class="folder-img-group">
     </div>
   </div>
 </div>
@@ -203,13 +188,8 @@ footer{margin-top:40px;padding:20px 0;text-align:center;color:var(--gray)}
 <div class="section" id="fun">
   <h2>娱乐 <button class="dropdown-btn">▼</button></h2>
   <div class="dropdown-content">
-    <div class="grid">
-      <div class="card">
-        <div class="card-body">
-          <h3>休闲时光</h3>
-          <p>轻松的休闲时刻，记录生活点滴</p>
-        </div>
-      </div>
+    <div class="folder-item">休闲日常</div>
+    <div class="folder-img-group">
     </div>
   </div>
 </div>
@@ -218,8 +198,11 @@ footer{margin-top:40px;padding:20px 0;text-align:center;color:var(--gray)}
 <div class="section" id="family">
   <h2>家史 <button class="dropdown-btn">▼</button></h2>
   <div class="dropdown-content">
-    <div class="article">
-      <p>“活到老，学到老”是胡氏家族的良训。老爸是终身学习的典范……</p>
+    <div class="folder-item">家族老照片</div>
+    <div class="folder-img-group">
+    </div>
+    <div class="folder-item">家族故事</div>
+    <div class="folder-img-group">
     </div>
   </div>
 </div>
@@ -228,13 +211,11 @@ footer{margin-top:40px;padding:20px 0;text-align:center;color:var(--gray)}
 <div class="section" id="video">
   <h2>视频 <button class="dropdown-btn">▼</button></h2>
   <div class="dropdown-content">
-    <div class="grid">
-      <div class="card">
-        <div class="card-body">
-          <h3>视频合集</h3>
-          <p>家史短片、生活录像</p>
-        </div>
-      </div>
+    <div class="folder-item">生活短片</div>
+    <div class="folder-img-group">
+    </div>
+    <div class="folder-item">家史录像</div>
+    <div class="folder-img-group">
     </div>
   </div>
 </div>
@@ -243,13 +224,8 @@ footer{margin-top:40px;padding:20px 0;text-align:center;color:var(--gray)}
 <div class="section" id="other">
   <h2>其他 <button class="dropdown-btn">▼</button></h2>
   <div class="dropdown-content">
-    <div class="grid">
-      <div class="card">
-        <div class="card-body">
-          <h3>杂记</h3>
-          <p>零散随笔、备忘记录</p>
-        </div>
-      </div>
+    <div class="folder-item">杂项记录</div>
+    <div class="folder-img-group">
     </div>
   </div>
 </div>
@@ -287,7 +263,7 @@ dropBtns.forEach(btn=>{
   }
 })
 
-// 文件夹点击展开
+// 文件夹点击展开（空容器，以后加图片）
 const folders = document.querySelectorAll('.folder-item');
 folders.forEach(folder=>{
   folder.onclick = function(){
@@ -297,14 +273,13 @@ folders.forEach(folder=>{
   }
 })
 
-// 图片点击放大
+// 图片放大
 const modal = document.getElementById('imgModal');
 const modalImg = document.getElementById('modalImg');
 const closeBtn = document.querySelector('.modal-close');
-const zoomImgs = document.querySelectorAll('.zoom-img');
-zoomImgs.forEach(img=>{
-  img.onclick = function(){
-    modalImg.src = this.src;
+document.addEventListener('click', function(e){
+  if(e.target.classList.contains('zoom-img')){
+    modalImg.src = e.target.src;
     modal.classList.add('show');
   }
 })
