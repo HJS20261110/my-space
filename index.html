@@ -126,7 +126,7 @@ footer{margin-top:40px;padding:20px 0;text-align:center;color:var(--gray)}
 .img-modal{
   display:none;
   position:fixed;
-  z-index:9999;
+  z-index:99999;
   left:0;top:0;
   width:100%;height:100%;
   background:rgba(0,0,0,0.85);
@@ -134,7 +134,14 @@ footer{margin-top:40px;padding:20px 0;text-align:center;color:var(--gray)}
   justify-content:center;
 }
 .modal-img{max-width:90%;max-height:90%;}
-.modal-close{position:absolute;top:16px;right:30px;color:white;font-size:36px;cursor:pointer;}
+.modal-close{
+  position:absolute;
+  top:16px;
+  right:30px;
+  color:white;
+  font-size:36px;
+  cursor:pointer;
+}
 .img-modal.show{display:flex;}
 </style>
 </head>
