@@ -14,8 +14,8 @@
   --white:#fff;
 }
 body{background:#fffdf4;color:var(--text);line-height:1.7}
-header{background:var(--white);z-index:99;position:relative;padding-right:180px;}
-.top-wrap{
+header{background:var(--white);z-index:99;}
+.top-row{
   display:flex;
   justify-content:space-between;
   align-items:center;
@@ -27,9 +27,6 @@ header{background:var(--white);z-index:99;position:relative;padding-right:180px;
   font-weight:bold;
 }
 .person-card{
-  position:absolute;
-  right:20px;
-  top:10px;
   width:140px;
   background:rgba(255,255,255,0.95);
   border-radius:14px;
@@ -136,13 +133,15 @@ footer{margin-top:40px;padding:20px 0;text-align:center;color:var(--gray)}
 </head>
 <body>
 <header>
-  <div class="top-wrap">
+  <!-- 标题 和 头像卡片【同一行，左右并排】 -->
+  <div class="top-row">
     <div class="top-title">青春风采 活力无限</div>
+    <div class="person-card">
+      <img class="zoom-img" src="avatar.jpg" alt="人物照片">
+      <div class="person-name">胡劲松</div>
+    </div>
   </div>
-  <div class="person-card">
-    <img class="zoom-img" src="avatar.jpg" alt="人物照片">
-    <div class="person-name">胡劲松</div>
-  </div>
+  <!-- 导航栏单独一行 -->
   <div class="nav-row">
     <a href="#" data-target="home" class="active">首页</a>
     <a href="#" data-target="album">相册</a>
