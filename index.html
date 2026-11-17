@@ -58,23 +58,31 @@ header{background:var(--white);z-index:99;}
 .container{max-width:1100px;margin:0 auto;padding:20px}
 .section{display:none}
 .section.show{display:block}
-.section h2{
+.section-header{
+  display:flex;
+  align-items:center;
+  gap:8px;
   font-size:32px;
   border-left:5px solid var(--main);
   padding-left:12px;
   margin-bottom:12px;
 }
-.dropdown-btn{
-  border:none;
-  background:transparent;
-  font-size:22px;
-  cursor:pointer;
+.section-title{
+  font-size:32px;
+}
+.triangle{
+  font-size:28px;
   color:var(--main);
-  margin-left:8px;
+  cursor:pointer;
+  transition:transform 0.2s;
+}
+.triangle.open{
+  transform:rotate(180deg);
 }
 .dropdown-content{
   display:none;
   margin-top:12px;
+  padding-left:17px;
 }
 .dropdown-content.show{
   display:block;
@@ -160,12 +168,20 @@ footer{margin-top:40px;padding:20px 0;text-align:center;color:var(--gray)}
 <div class="container">
 
 <div class="section show" id="home">
-  <h2 style="font-size:32px;border-left:5px solid var(--main);padding-left:12px;margin-bottom:12px">首页</h2>
-  <p>轻松的休闲时刻，记录生活点滴。</p>
+  <div class="section-header">
+    <div class="section-title">首页</div>
+    <span class="triangle">▼</span>
+  </div>
+  <div class="dropdown-content">
+    <p>轻松的休闲时刻，记录生活点滴。</p>
+  </div>
 </div>
 
 <div class="section" id="album">
-  <h2>相册 <button class="dropdown-btn">▼</button></h2>
+  <div class="section-header">
+    <div class="section-title">相册</div>
+    <span class="triangle">▼</span>
+  </div>
   <div class="dropdown-content">
     <div class="folder-item">家庭合影</div>
     <div class="photo-grid">
@@ -179,7 +195,10 @@ footer{margin-top:40px;padding:20px 0;text-align:center;color:var(--gray)}
 </div>
 
 <div class="section" id="sport">
-  <h2>运动 <button class="dropdown-btn">▼</button></h2>
+  <div class="section-header">
+    <div class="section-title">运动</div>
+    <span class="triangle">▼</span>
+  </div>
   <div class="dropdown-content">
     <div class="folder-item">跑步记录</div>
     <div class="photo-grid"></div>
@@ -191,7 +210,10 @@ footer{margin-top:40px;padding:20px 0;text-align:center;color:var(--gray)}
 </div>
 
 <div class="section" id="music">
-  <h2>音乐 <button class="dropdown-btn">▼</button></h2>
+  <div class="section-header">
+    <div class="section-title">音乐</div>
+    <span class="triangle">▼</span>
+  </div>
   <div class="dropdown-content">
     <div class="folder-item">吉他弹唱</div>
     <div class="photo-grid"></div>
@@ -203,7 +225,10 @@ footer{margin-top:40px;padding:20px 0;text-align:center;color:var(--gray)}
 </div>
 
 <div class="section" id="travel">
-  <h2>旅行 <button class="dropdown-btn">▼</button></h2>
+  <div class="section-header">
+    <div class="section-title">旅行</div>
+    <span class="triangle">▼</span>
+  </div>
   <div class="dropdown-content">
     <div class="folder-item">游记照片</div>
     <div class="photo-grid"></div>
@@ -213,7 +238,10 @@ footer{margin-top:40px;padding:20px 0;text-align:center;color:var(--gray)}
 </div>
 
 <div class="section" id="read">
-  <h2>阅读 <button class="dropdown-btn">▼</button></h2>
+  <div class="section-header">
+    <div class="section-title">阅读</div>
+    <span class="triangle">▼</span>
+  </div>
   <div class="dropdown-content">
     <div class="folder-item">读书笔记</div>
     <div class="photo-grid"></div>
@@ -223,7 +251,10 @@ footer{margin-top:40px;padding:20px 0;text-align:center;color:var(--gray)}
 </div>
 
 <div class="section" id="fun">
-  <h2>娱乐 <button class="dropdown-btn">▼</button></h2>
+  <div class="section-header">
+    <div class="section-title">娱乐</div>
+    <span class="triangle">▼</span>
+  </div>
   <div class="dropdown-content">
     <div class="folder-item">电影追剧</div>
     <div class="photo-grid"></div>
@@ -233,12 +264,15 @@ footer{margin-top:40px;padding:20px 0;text-align:center;color:var(--gray)}
 </div>
 
 <div class="section" id="family">
-  <h2>家史 <button class="dropdown-btn">▼</button></h2>
+  <div class="section-header">
+    <div class="section-title">家史</div>
+    <span class="triangle">▼</span>
+  </div>
   <div class="dropdown-content">
     <div class="folder-item">胡氏源流</div>
     <div class="photo-grid"></div>
-    <div class="folder-item" id="oldPhotoFolder">家族老照片</div>
-    <div class="photo-grid" id="oldPhotoGrid">
+    <div class="folder-item">家族老照片</div>
+    <div class="photo-grid">
       <img src="family-old-photo/old01.jpg" class="zoom-img">
       <img src="family-old-photo/old02.jpg" class="zoom-img">
       <img src="family-old-photo/old03.png" class="zoom-img">
@@ -250,7 +284,10 @@ footer{margin-top:40px;padding:20px 0;text-align:center;color:var(--gray)}
 </div>
 
 <div class="section" id="video">
-  <h2>视频 <button class="dropdown-btn">▼</button></h2>
+  <div class="section-header">
+    <div class="section-title">视频</div>
+    <span class="triangle">▼</span>
+  </div>
   <div class="dropdown-content">
     <div class="folder-item">生活短视频</div>
     <div class="photo-grid"></div>
@@ -260,7 +297,10 @@ footer{margin-top:40px;padding:20px 0;text-align:center;color:var(--gray)}
 </div>
 
 <div class="section" id="other">
-  <h2>其他 <button class="dropdown-btn">▼</button></h2>
+  <div class="section-header">
+    <div class="section-title">其他</div>
+    <span class="triangle">▼</span>
+  </div>
   <div class="dropdown-content">
     <div class="folder-item">随手记录</div>
     <div class="photo-grid"></div>
@@ -290,6 +330,16 @@ links.forEach(link=>{
     this.classList.add('active');
     sections.forEach(s=>s.classList.remove('show'));
     document.getElementById(target).classList.add('show');
+  }
+})
+
+// 标题三角下拉
+const triangles = document.querySelectorAll('.triangle');
+triangles.forEach(tri=>{
+  tri.onclick = function(){
+    const content = this.closest('.section-header').nextElementSibling;
+    content.classList.toggle('show');
+    this.classList.toggle('open');
   }
 })
 
