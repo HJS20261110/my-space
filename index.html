@@ -126,23 +126,34 @@ footer{margin-top:40px;padding:20px 0;text-align:center;color:var(--gray)}
 .img-modal{
   display:none;
   position:fixed;
-  z-index:99999;
+  z-index:999999;
   left:0;top:0;
   width:100%;height:100%;
-  background:rgba(0,0,0,0.85);
+  background:rgba(0,0,0,0.9);
   align-items:center;
   justify-content:center;
 }
-.modal-img{max-width:90%;max-height:90%;}
+.img-modal.show{
+  display:flex;
+}
+.modal-img{
+  max-width:90%;
+  max-height:90%;
+  border-radius:8px;
+}
 .modal-close{
   position:absolute;
-  top:16px;
+  top:20px;
   right:30px;
   color:white;
-  font-size:36px;
+  font-size:40px;
+  font-weight:bold;
   cursor:pointer;
+  z-index:9999999;
 }
-.img-modal.show{display:flex;}
+.modal-close:hover{
+  color:var(--main);
+}
 </style>
 </head>
 <body>
@@ -316,11 +327,11 @@ footer{margin-top:40px;padding:20px 0;text-align:center;color:var(--gray)}
   </div>
 </div>
 
-<div class="img-modal" id="imgModal">
-  <span class="modal-close">×</span>
-  <img class="modal-img" id="modalImg">
 </div>
 
+<div class="img-modal" id="imgModal">
+  <span class="modal-close" id="modalClose">×</span>
+  <img class="modal-img" id="modalImg">
 </div>
 
 <footer>© 2026 青春风采 活力无限<br>@HJS20261110</footer>
@@ -340,7 +351,6 @@ links.forEach(link=>{
   }
 })
 
-// 标题三角下拉
 const triangles = document.querySelectorAll('.triangle');
 triangles.forEach(tri=>{
   tri.onclick = function(){
@@ -350,7 +360,6 @@ triangles.forEach(tri=>{
   }
 })
 
-// 文件夹展开收起
 const folderItems = document.querySelectorAll('.folder-item');
 folderItems.forEach(item=>{
   item.onclick = function(){
@@ -360,20 +369,27 @@ folderItems.forEach(item=>{
   }
 })
 
-// 大图弹窗
 const modal = document.getElementById('imgModal');
 const modalImg = document.getElementById('modalImg');
-const closeBtn = document.querySelector('.modal-close');
-document.addEventListener('click', function(e){
-  if(e.target.classList.contains('zoom-img')){
-    modalImg.src = e.target.src;
+const modalClose = document.getElementById('modalClose');
+
+document.querySelectorAll('.zoom-img').forEach(img=>{
+  img.addEventListener('click', function(e){
+    e.stopPropagation();
+    modalImg.src = this.src;
     modal.classList.add('show');
+  });
+});
+
+modalClose.addEventListener('click', function(){
+  modal.classList.remove('show');
+});
+
+modal.addEventListener('click', function(e){
+  if(e.target === modal){
+    modal.classList.remove('show');
   }
-})
-closeBtn.onclick = ()=> modal.classList.remove('show');
-modal.onclick = (e)=>{
-  if(e.target === modal) modal.classList.remove('show');
-}
+});
 </script>
 </body>
 </html>
