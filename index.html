@@ -115,14 +115,24 @@ header{background:var(--white);z-index:99;}
 .photo-grid.show{
   display:grid;
 }
-.photo-grid img{
+.photo-grid img, .photo-grid .video-thumb{
   width:100%;
   height:200px;
   object-fit:cover;
   border-radius:8px;
   cursor:pointer;
 }
+.video-thumb{
+  background:#222;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  font-size:40px;
+}
 footer{margin-top:40px;padding:20px 0;text-align:center;color:var(--gray)}
+
+/* 图片弹窗 */
 .img-modal{
   display:none;
   position:fixed;
@@ -153,6 +163,27 @@ footer{margin-top:40px;padding:20px 0;text-align:center;color:var(--gray)}
 }
 .modal-close:hover{
   color:var(--main);
+}
+
+/* 视频弹窗 */
+.video-modal{
+  display:none;
+  position:fixed;
+  z-index:999999;
+  left:0;top:0;
+  width:100%;height:100%;
+  background:rgba(0,0,0,0.92);
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+.video-modal.show{
+  display:flex;
+}
+.video-modal video{
+  max-width:90%;
+  max-height:90%;
+  border-radius:8px;
 }
 </style>
 </head>
@@ -297,7 +328,11 @@ footer{margin-top:40px;padding:20px 0;text-align:center;color:var(--gray)}
       <img src="family-old-photo/old04.jpg" class="zoom-img">
     </div>
     <div class="folder-item">胡氏短剧</div>
-    <div class="photo-grid"></div>
+    <div class="photo-grid">
+      <!-- 视频缩略，点击播放弹窗 -->
+      <div class="video-thumb" data-video="hushi-drama/drama01.mp4">▶</div>
+      <div class="video-thumb" data-video="hushi-drama/drama02.mp4">▶</div>
+    </div>
   </div>
 </div>
 
@@ -329,9 +364,16 @@ footer{margin-top:40px;padding:20px 0;text-align:center;color:var(--gray)}
 
 </div>
 
+<!-- 图片弹窗 -->
 <div class="img-modal" id="imgModal">
   <span class="modal-close" id="modalClose">×</span>
   <img class="modal-img" id="modalImg">
+</div>
+
+<!-- 视频弹窗 -->
+<div class="video-modal" id="videoModal">
+  <span class="modal-close" id="videoClose">×</span>
+  <video id="videoPlayer" controls></video>
 </div>
 
 <footer>© 2026 青春风采 活力无限<br>@HJS20261110</footer>
@@ -369,10 +411,10 @@ folderItems.forEach(item=>{
   }
 })
 
+// 图片放大
 const modal = document.getElementById('imgModal');
 const modalImg = document.getElementById('modalImg');
 const modalClose = document.getElementById('modalClose');
-
 document.querySelectorAll('.zoom-img').forEach(img=>{
   img.addEventListener('click', function(e){
     e.stopPropagation();
@@ -380,16 +422,33 @@ document.querySelectorAll('.zoom-img').forEach(img=>{
     modal.classList.add('show');
   });
 });
-
-modalClose.addEventListener('click', function(){
-  modal.classList.remove('show');
-});
-
+modalClose.addEventListener('click', ()=> modal.classList.remove('show'));
 modal.addEventListener('click', function(e){
-  if(e.target === modal){
-    modal.classList.remove('show');
-  }
+  if(e.target === modal) modal.classList.remove('show');
 });
+
+// 视频弹窗播放
+const videoModal = document.getElementById('videoModal');
+const videoPlayer = document.getElementById('videoPlayer');
+const videoClose = document.getElementById('videoClose');
+document.querySelectorAll('.video-thumb').forEach(thumb=>{
+  thumb.onclick = function(){
+    const src = this.dataset.video;
+    videoPlayer.src = src;
+    videoModal.classList.add('show');
+    videoPlayer.play();
+  }
+})
+videoClose.onclick = ()=>{
+  videoPlayer.pause();
+  videoModal.classList.remove('show');
+}
+videoModal.onclick = function(e){
+  if(e.target === videoModal){
+    videoPlayer.pause();
+    videoModal.classList.remove('show');
+  }
+}
 </script>
 </body>
 </html>
