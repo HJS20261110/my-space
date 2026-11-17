@@ -26,10 +26,19 @@ header{background:var(--white);z-index:99;}
   color:var(--main);
   font-weight:bold;
 }
-/* 删掉白色卡片、阴影，直接放图，融入页面 */
+.avatar-wrap{
+  text-align:center;
+}
 .avatar-img{
   width:140px;
   display:block;
+  margin:0 auto;
+}
+.avatar-name{
+  font-size:24px;
+  font-weight:bold;
+  margin-top:4px;
+  color:#222;
 }
 .nav-row{display:flex;gap:4px;flex-wrap:wrap;padding:0 20px 12px}
 .nav-row a{display:inline-block;padding:8px 16px;border-radius:6px;text-decoration:none;color:#333;font-size:18px}
@@ -119,8 +128,10 @@ footer{margin-top:40px;padding:20px 0;text-align:center;color:var(--gray)}
 <header>
   <div class="top-row">
     <div class="top-title">青春风采 活力无限</div>
-    <!-- 直接图片，没有白色外框盒子 -->
-    <img class="avatar-img zoom-img" src="avatar.jpg" alt="胡劲松">
+    <div class="avatar-wrap">
+      <img class="avatar-img zoom-img" src="avatar.jpg" alt="胡劲松">
+      <div class="avatar-name">胡劲松</div>
+    </div>
   </div>
   <div class="nav-row">
     <a href="#" data-target="home" class="active">首页</a>
