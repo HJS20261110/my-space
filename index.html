@@ -56,8 +56,6 @@ header{background:var(--white);z-index:99;}
 }
 
 .container{max-width:1100px;margin:0 auto;padding:20px}
-.home-section{display:none}
-.home-section.show{display:block}
 .section{display:none}
 .section.show{display:block}
 .section h2{
@@ -99,14 +97,22 @@ header{background:var(--white);z-index:99;}
 .folder-item.open::before{
   content:"📂";
 }
-.folder-img-group{
-  display:none;
-  padding:14px 0 14px 36px;
-  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
-  gap:14px;
-}
-.folder-img-group.show{
+.photo-grid{
   display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px,1fr));
+  gap:14px;
+  padding:14px 0 14px 36px;
+  display:none;
+}
+.photo-grid.show{
+  display:grid;
+}
+.photo-grid img{
+  width:100%;
+  height:200px;
+  object-fit:cover;
+  border-radius:8px;
+  cursor:pointer;
 }
 footer{margin-top:40px;padding:20px 0;text-align:center;color:var(--gray)}
 .img-modal{
@@ -153,7 +159,7 @@ footer{margin-top:40px;padding:20px 0;text-align:center;color:var(--gray)}
 
 <div class="container">
 
-<div class="home-section show" id="home">
+<div class="section show" id="home">
   <h2 style="font-size:32px;border-left:5px solid var(--main);padding-left:12px;margin-bottom:12px">首页</h2>
   <p>轻松的休闲时刻，记录生活点滴。</p>
 </div>
@@ -162,11 +168,13 @@ footer{margin-top:40px;padding:20px 0;text-align:center;color:var(--gray)}
   <h2>相册 <button class="dropdown-btn">▼</button></h2>
   <div class="dropdown-content">
     <div class="folder-item">家庭合影</div>
-    <div class="folder-img-group"></div>
+    <div class="photo-grid">
+      <img src="family-old-photo/old01.jpg" class="zoom-img">
+    </div>
     <div class="folder-item">旅行照片</div>
-    <div class="folder-img-group"></div>
+    <div class="photo-grid"></div>
     <div class="folder-item">生活随拍</div>
-    <div class="folder-img-group"></div>
+    <div class="photo-grid"></div>
   </div>
 </div>
 
@@ -174,11 +182,11 @@ footer{margin-top:40px;padding:20px 0;text-align:center;color:var(--gray)}
   <h2>运动 <button class="dropdown-btn">▼</button></h2>
   <div class="dropdown-content">
     <div class="folder-item">跑步记录</div>
-    <div class="folder-img-group"></div>
+    <div class="photo-grid"></div>
     <div class="folder-item">球类运动</div>
-    <div class="folder-img-group"></div>
+    <div class="photo-grid"></div>
     <div class="folder-item">健身打卡</div>
-    <div class="folder-img-group"></div>
+    <div class="photo-grid"></div>
   </div>
 </div>
 
@@ -186,11 +194,11 @@ footer{margin-top:40px;padding:20px 0;text-align:center;color:var(--gray)}
   <h2>音乐 <button class="dropdown-btn">▼</button></h2>
   <div class="dropdown-content">
     <div class="folder-item">吉他弹唱</div>
-    <div class="folder-img-group"></div>
+    <div class="photo-grid"></div>
     <div class="folder-item">听歌记录</div>
-    <div class="folder-img-group"></div>
+    <div class="photo-grid"></div>
     <div class="folder-item">演出照片</div>
-    <div class="folder-img-group"></div>
+    <div class="photo-grid"></div>
   </div>
 </div>
 
@@ -198,9 +206,9 @@ footer{margin-top:40px;padding:20px 0;text-align:center;color:var(--gray)}
   <h2>旅行 <button class="dropdown-btn">▼</button></h2>
   <div class="dropdown-content">
     <div class="folder-item">游记照片</div>
-    <div class="folder-img-group"></div>
+    <div class="photo-grid"></div>
     <div class="folder-item">旅途见闻</div>
-    <div class="folder-img-group"></div>
+    <div class="photo-grid"></div>
   </div>
 </div>
 
@@ -208,9 +216,9 @@ footer{margin-top:40px;padding:20px 0;text-align:center;color:var(--gray)}
   <h2>阅读 <button class="dropdown-btn">▼</button></h2>
   <div class="dropdown-content">
     <div class="folder-item">读书笔记</div>
-    <div class="folder-img-group"></div>
+    <div class="photo-grid"></div>
     <div class="folder-item">推荐书单</div>
-    <div class="folder-img-group"></div>
+    <div class="photo-grid"></div>
   </div>
 </div>
 
@@ -218,9 +226,9 @@ footer{margin-top:40px;padding:20px 0;text-align:center;color:var(--gray)}
   <h2>娱乐 <button class="dropdown-btn">▼</button></h2>
   <div class="dropdown-content">
     <div class="folder-item">电影追剧</div>
-    <div class="folder-img-group"></div>
+    <div class="photo-grid"></div>
     <div class="folder-item">趣味视频</div>
-    <div class="folder-img-group"></div>
+    <div class="photo-grid"></div>
   </div>
 </div>
 
@@ -228,11 +236,16 @@ footer{margin-top:40px;padding:20px 0;text-align:center;color:var(--gray)}
   <h2>家史 <button class="dropdown-btn">▼</button></h2>
   <div class="dropdown-content">
     <div class="folder-item">胡氏源流</div>
-    <div class="folder-img-group"></div>
-    <div class="folder-item">家族老照片</div>
-    <div class="folder-img-group"></div>
+    <div class="photo-grid"></div>
+    <div class="folder-item" id="oldPhotoFolder">家族老照片</div>
+    <div class="photo-grid" id="oldPhotoGrid">
+      <img src="family-old-photo/old01.jpg" class="zoom-img">
+      <img src="family-old-photo/old02.jpg" class="zoom-img">
+      <img src="family-old-photo/old03.png" class="zoom-img">
+      <img src="family-old-photo/old04.jpg" class="zoom-img">
+    </div>
     <div class="folder-item">亲人纪念</div>
-    <div class="folder-img-group"></div>
+    <div class="photo-grid"></div>
   </div>
 </div>
 
@@ -240,9 +253,9 @@ footer{margin-top:40px;padding:20px 0;text-align:center;color:var(--gray)}
   <h2>视频 <button class="dropdown-btn">▼</button></h2>
   <div class="dropdown-content">
     <div class="folder-item">生活短视频</div>
-    <div class="folder-img-group"></div>
+    <div class="photo-grid"></div>
     <div class="folder-item">旅行视频</div>
-    <div class="folder-img-group"></div>
+    <div class="photo-grid"></div>
   </div>
 </div>
 
@@ -250,9 +263,9 @@ footer{margin-top:40px;padding:20px 0;text-align:center;color:var(--gray)}
   <h2>其他 <button class="dropdown-btn">▼</button></h2>
   <div class="dropdown-content">
     <div class="folder-item">随手记录</div>
-    <div class="folder-img-group"></div>
+    <div class="photo-grid"></div>
     <div class="folder-item">留言相册</div>
-    <div class="folder-img-group"></div>
+    <div class="photo-grid"></div>
   </div>
 </div>
 
@@ -267,7 +280,6 @@ footer{margin-top:40px;padding:20px 0;text-align:center;color:var(--gray)}
 
 <script>
 const links = document.querySelectorAll('.nav-row a');
-const homeSection = document.getElementById('home');
 const sections = document.querySelectorAll('.section');
 
 links.forEach(link=>{
@@ -276,36 +288,22 @@ links.forEach(link=>{
     const target = this.dataset.target;
     links.forEach(l=>l.classList.remove('active'));
     this.classList.add('active');
-
-    if(target === 'home'){
-      homeSection.classList.add('show');
-      sections.forEach(s=>s.classList.remove('show'));
-    } else {
-      homeSection.classList.remove('show');
-      sections.forEach(s=>s.classList.remove('show'));
-      document.getElementById(target).classList.add('show');
-    }
+    sections.forEach(s=>s.classList.remove('show'));
+    document.getElementById(target).classList.add('show');
   }
 })
 
-const dropBtns = document.querySelectorAll('.dropdown-btn');
-dropBtns.forEach(btn=>{
-  btn.onclick = function(){
-    const content = this.parentElement.nextElementSibling;
-    content.classList.toggle('show');
-    this.textContent = content.classList.contains('show') ? '▲' : '▼';
-  }
-})
-
-const folders = document.querySelectorAll('.folder-item');
-folders.forEach(folder=>{
-  folder.onclick = function(){
-    const imgGroup = this.nextElementSibling;
-    imgGroup.classList.toggle('show');
+// 文件夹展开收起
+const folderItems = document.querySelectorAll('.folder-item');
+folderItems.forEach(item=>{
+  item.onclick = function(){
+    const grid = this.nextElementSibling;
+    grid.classList.toggle('show');
     this.classList.toggle('open');
   }
 })
 
+// 大图弹窗
 const modal = document.getElementById('imgModal');
 const modalImg = document.getElementById('modalImg');
 const closeBtn = document.querySelector('.modal-close');
